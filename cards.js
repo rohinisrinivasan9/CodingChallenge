@@ -28,15 +28,16 @@ function shuffle(deck) {
 // console.log(testingDeck);
 
 var deal = function(p) {
-
-    var players =[];
-    var deck = createDeck();
-    shuffle(deck);
-    //p = 4; //hardcoding number of players for now
-    console.log("SECOND SHUFFLE");
-    console.log(deck);
-    console.log(deck.length);
-
+    if(p <= 0){
+      console.log("Invalid number of users");
+    } else if(p <= 52 && p>0) {
+      var players =[];
+      var deck = createDeck();
+      shuffle(deck);
+      //p = 4; //hardcoding number of players for now
+      console.log("SECOND SHUFFLE");
+      console.log(deck);
+      console.log(deck.length);
     for(var i =0;i<p ;i++)
     {
         var temp=[];
@@ -56,14 +57,23 @@ var deal = function(p) {
         }
 
     }
+
     return players;
+  } else {
+    console.log("Number of players exceeded.");
+  }
+
     //return shuffle(deck).splice(card, 1)[0];
   }
 
-   var noofplayers=8;
-   var players = deal(noofplayers);
+//Test case 1
+   var players = deal(3);
    for(var i=0;i<players.length;i++)
    {
        console.log("Player "+ i +" card",players[i] );
 
    }
+// Test case 2
+   deal(55);
+// Test Case 3
+   deal(-1);
